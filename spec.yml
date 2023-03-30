@@ -1,0 +1,111 @@
+openapi: 3.0.3
+info:
+  title: Random Duck - OpenAPI 3.0
+  description: |-
+    This is an API that generates random ducks.
+  contact:
+    email: contact@random-d.uk
+  version: 2.0.0
+externalDocs:
+  description: Find out more about the API
+  url: https://random-d.uk/
+servers:
+  - url: https://random-d.uk/api
+  - url: https://random-d.uk/api/v2
+tags:
+  - name: json
+    description: Returns JSON objects
+    externalDocs:
+      description: Find out more
+      url: https://random-d.uk/api
+  - name: image
+    description: Returns an image file
+    externalDocs:
+      description: Find out more
+      url: https://random-d.uk/api
+paths:
+  /random:
+    get:
+      tags:
+        - json
+      summary: Returns a JSON object containing a link to the random image
+      description: Returns a JSON object containing a link to the random image and an optional attribution message
+      operationId: random
+      responses:
+        '200':
+          description: A JSON object containing a link to the random image and an optional attribution message
+          content:
+            application/json:
+  /quack:
+    get:
+      tags:
+        - json
+      summary: Returns a JSON object containing a link to the random image
+      description: Returns a JSON object containing a link to the random image and an optional attribution message
+      operationId: quack
+      responses:
+        '200':
+          description: A JSON object containing a link to the random image and an optional attribution message
+          content:
+            application/json:
+  /randomimg:
+    get:
+      tags:
+        - image
+      summary: Returns an image file
+      description: Returns an image file in either GIF or JPG format
+      operationId: randomimg
+      responses:
+        '200':
+          description: An image file in either GIF or JPG format
+          content:
+            image/jpeg:
+            image/gif:
+  /list:
+    get:
+      tags:
+        - json
+      summary: Returns a JSON object containing all available filenames
+      description: Returns a JSON object containing all available filenames in no particular order
+      operationId: list
+      responses:
+        '200':
+          description: a JSON object containing all available filenames in no particular order
+          content:
+            application/json:
+  /:num.jpg:
+    get:
+      tags:
+        - image
+      summary: Returns a JPG image file directly
+      description: Returns a JPG image file directly by number
+      operationId: num.jpg
+      responses:
+        '200':
+          description: A JPG image file
+          content:
+            image/jpeg:
+  /:num.gif:
+    get:
+      tags:
+        - image
+      summary: Returns a GIF image file directly
+      description: Returns a GIF image file directly by number
+      operationId: num.gif
+      responses:
+        '200':
+          description: A GIF image file
+          content:
+            image/gif:
+  /http/:code:
+    get:
+      tags:
+        - image
+      summary: Returns an image file of a duck representing an HTTP status code directly
+      description: Returns an image file of a duck representing an HTTP status code directly
+      operationId: httpcode
+      responses:
+        '200':
+          description: An image file of a duck representing an HTTP status code
+          content:
+            image/jpeg:
