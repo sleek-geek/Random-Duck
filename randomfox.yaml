@@ -1,0 +1,19 @@
+openapi: 3.0.3
+info:
+  title: Random Fox - OpenAPI 3.0
+  description: |-
+    This is an API that generates random foxes.
+  version: 1.0.0
+servers:
+  - url: https://randomfox.ca
+paths:
+  /floof:
+    get:
+      summary: Returns a JSON object containing a link to a random fox image
+      description: Returns a JSON object containing a link to a random fox image
+      operationId: floof
+      responses:
+        '200':
+          description: A JSON object containing a link to the random image
+          content:
+            application/json:
