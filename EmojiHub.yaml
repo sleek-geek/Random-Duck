@@ -1,0 +1,106 @@
+openapi: 3.0.3
+info:
+  title: EmojiHub  - OpenAPI 3.0
+  description: >-
+    EmojiHub provides an opportunity to get random emojis from already sorted
+    categories and groups. You can find a list of the allowed categories and groups in the Github page at https://github.com/cheatsnake/emojihub.
+  contact:
+    email: yury.swiderko@gmail.com
+  version: 2.0.0
+servers:
+  - url: https://emojihub.yurace.pro/api
+paths:
+  /all:
+    get:
+      summary: Get all emojis.
+      description: Get an array of all emojis.
+      operationId: getAllEmojis
+      responses:
+        '200':
+          description: Successful operation
+      tags:
+        - emojis
+  /random:
+    get:
+      summary: Get random emoji.
+      description: Get a random emoji.
+      operationId: getRandomEmoji
+      responses:
+        '200':
+          description: Successful operation
+      tags:
+        - emojis
+  /all/category/{category}:
+    get:
+      summary: Get all emojis from category.
+      description: Get an array of all emojis from a certain category.
+      operationId: getAllEmojisByCat
+      responses:
+        '200':
+          description: Successful operation
+      tags:
+        - emojis
+      parameters:
+        - name: category
+          in: path
+          description: category of choice.
+          required: true
+          explode: false
+          schema:
+            type: string
+        
+  /random/category/{category}:
+    get:
+      summary: Get random emoji from category.
+      description: Get a random emoji from a certain category.
+      operationId: getRandomEmojiByCat
+      responses:
+        '200':
+          description: Successful operation
+      tags:
+        - emojis
+      parameters:
+        - name: category
+          in: path
+          description: category of choice.
+          required: true
+          explode: false
+          schema:
+            type: string
+  /all/group/{group}:
+    get:
+      summary: Get all emojis from group.
+      description: Get an array of all emojis from a certain group.
+      operationId: getAllEmojisByGroup
+      responses:
+        '200':
+          description: Successful operation
+      tags:
+        - emojis
+      parameters:
+        - name: group
+          in: path
+          description: group of choice.
+          required: true
+          explode: false
+          schema:
+            type: string
+        
+  /random/group/{group}:
+    get:
+      summary: Get random emoji from group.
+      description: Get a random emoji from a certain group.
+      operationId: getRandomEmojiByGroup
+      responses:
+        '200':
+          description: Successful operation
+      tags:
+        - emojis
+      parameters:
+        - name: group
+          in: path
+          description: group of choice.
+          required: true
+          explode: false
+          schema:
+            type: string
