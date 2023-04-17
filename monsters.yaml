@@ -1,0 +1,159 @@
+openapi: 3.0.3
+info:
+  title: Pixel Encounter  - OpenAPI 3.0
+  description: >-
+    Simply a web application and an API which generates randomly generated pixel monsters in SVG format.
+            It can be used to create profile pictures. If you are on the home page, then go to the API page for documentation.
+            Feel free to use the API to integrate it in your application to create avatars or something else.
+  version: 1.0.0
+servers:
+  - url: https://app.pixelencounter.com/api/basic
+paths:
+  /monsters/random:
+    get:
+      summary:  Get a random SVG monster.
+      description: Get a random SVG monster.
+      operationId: getRandomMonster
+      responses:
+        '200':
+          description: Successful operation
+      tags:
+        - Monsters
+  /monsters/random/json:
+    get:
+      summary:  Get a random SVG monster as json output.
+      description:  Get a random SVG monster as json output. 
+      operationId: getRandomJsonMonster
+      responses:
+        '200':
+          description: Successful operation
+      tags:
+        - Monsters
+  /monsters/random/{format}:
+    get:
+      summary:  Get a random SVG monster as image. 
+      description: Get an array of all emojis from a certain category.
+      operationId: getRandomMonsterImg
+      responses:
+        '200':
+          description: Successful operation
+      tags:
+        - Monsters
+      parameters:
+        - name: format
+          in: path
+          description: The value can be png, jpeg or webp.
+          required: true
+          explode: false
+          schema:
+            type: string
+        - name: size
+          in: query
+          description: The size in pixels, default is '100'.
+          required: true
+          explode: false
+          schema:
+            type: integer
+
+  /monsters/{id}:
+    get:
+      summary: Get a SVG monster by ID. 
+      description: Get a SVG monster by ID.
+      operationId: getMonsterById
+      responses:
+        '200':
+          description: Successful operation
+      tags:
+        - Monsters
+      parameters:
+        - name: id
+          in: path
+          description: The seed id, must be greater than '0' and lower than or equal to '2147483647'.
+          required: true
+          explode: false
+          schema:
+            type: integer
+  /monsters/{id}/json:
+    get:
+      summary: Get a SVG monster by ID as json output. 
+      description: Get a SVG monster by ID as json output. 
+      operationId: getJsonMonsterById
+      responses:
+        '200':
+          description: Successful operation
+      tags:
+        - Monsters
+      parameters:
+        - name: id
+          in: path
+          description: The seed id, must be greater than '0' and lower than or equal to '2147483647'.
+          required: true
+          explode: false
+          schema:
+            type: integer
+        
+  /monsters:
+    get:
+      summary:  Get a paged list with SVG monsters. 
+      description:  Get a paged list with SVG monsters. 
+      operationId: getMonsters
+      responses:
+        '200':
+          description: Successful operation
+      tags:
+        - Monsters
+      parameters:
+        - name: page
+          in: query
+          description: Page number, must be greater than 0 and lower than '44739242'.
+          required: false
+          explode: false
+          schema:
+            type: integer
+        - name: startRange
+          in: query
+          description: Must be greater than '0' and lower than endRange.
+          required: false
+          explode: false
+          schema:
+            type: integer
+        - name: endRange
+          in: query
+          description: Must be greater than startRange and lower than or equal to '2147483647'.
+          required: false
+          explode: false
+          schema:
+            type: integer
+
+  /monsters/{id}/{format}:
+    get:
+      summary:  Get a SVG monster by ID as Image. 
+      description:  Get a SVG monster by ID as Image.  
+      operationId: getMonsterImgById
+      responses:
+        '200':
+          description: Successful operation
+      tags:
+        - Monsters
+      parameters:
+        - name: id
+          in: path
+          description: The seed id, must be greater than '0' and lower than or equal to '2147483647'.
+          required: true
+          explode: false
+          schema:
+            type: integer
+        - name: format
+          in: path
+          description: The value can be png, jpeg or webp.
+          required: true
+          explode: false
+          schema:
+            type: string
+        - name: size
+          in: query
+          description: The size in pixels, default is '100'.
+          required: true
+          explode: false
+          schema:
+            type: integer
