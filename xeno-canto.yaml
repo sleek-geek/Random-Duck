@@ -1,0 +1,29 @@
+openapi: 3.0.3
+info:
+  title: xeno-canto - OpenAPI 3.0
+  description: Sharing wildlife sounds from around the world.
+  contact:
+    email: contact@xeno-canto.org
+  version: 2.0.0
+servers:
+  - url: https://xeno-canto.org/api/2
+
+paths:
+  /recordings:
+    get:
+      summary: Get recordings
+      description: Get recordings of birds sounds.
+      operationId: getRec
+      responses:
+        '200':
+          description: Successful operation
+      tags:
+        - recordings
+      parameters:
+        - name: query
+          in: query
+          description: Query to filter recordings by either by country (for example; cnt:brazil) or the name of the bird.
+          required: true
+          explode: false
+          schema:
+            type: string
